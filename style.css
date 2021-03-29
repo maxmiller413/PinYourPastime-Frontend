@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    font-family: monospace;
+  }
+#main-header {
+    display: flex;
+    justify-content: center;
+    background: #25ee54;
+    opacity: .8;
+    height: 7rem;
+    padding: 1rem;
+  }
+
+#visited {
+
+    width: 25%;
+    height: 200px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+#wishlist {
+
+    width: 25%;
+    height: 200px;
+    position: absolute;
+    right: 0;
+}
+#top-rated {
+
+    width: 25%;
+    height: 200px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+#main-container {
+
+    display: grid;
+    grid-template-columns: 25% auto 25%;
+    
+}
+
+#form{
+
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    bottom: 0;
+}

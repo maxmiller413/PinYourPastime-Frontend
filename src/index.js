@@ -42,6 +42,7 @@ loginDiv.addEventListener('submit', event => {
                 // divMain.dataset.id = data.id 
                 divMain.style.display = 'block'
                 loginDiv.style.display = 'none'
+                
             })
     }
 /*****************User Login Listener******************************/
@@ -66,7 +67,7 @@ loginDiv.addEventListener('submit', event => {
                     ballparkLi.dataset.id = ballpark.ballpark.id 
                 })
 
-                
+
                 data.user_ballparks.forEach(visit => {
 
                     // console.log(visit)
@@ -94,6 +95,8 @@ ballparks.addEventListener('click', event => {
         .then(resp => resp.json())
         .then(data => {
             // console.log(data)
+            userRatingForm.dataset.ballparkId = event.target.dataset.id
+            userRatingForm.dataset.visitId = event.target.dataset.userBallparkId
             img.src = data.image
             parkLocation.innerText = data.location
             parkName.innerText = data.name 
@@ -108,7 +111,50 @@ ballparks.addEventListener('click', event => {
 
 /*****************User Rating Form Listener******************************/
 
-// userRatingForm.addEventListener('submit', event => {
+userRatingForm.addEventListener('submit', event => {
+    event.preventDefault()
+    const overall = event.target.overall_experience.value
+    const concession = event.target.concession_rating.value
+    const beauty = event.target.beauty_rating.value
+    const price = event.target.overall_price_rating.value
+    const crowd = event.target.crowd_rating.value
+    const comments = event.target.comments.value
+    const visited = event.target.visited.value
+    const wishlist = event.target.wishlist.value
+    // console.log(overall)
+
+    const updatedObj = {
+
+        overall_experience: overall,
+        concession_rating: concession,
+        beauty_rating: beauty,
+        overall_price_rating: price,
+        crowd_rating: crowd,
+        comments: comments,
+        visited: visited,
+        wishlist: wishlist
+    }
+    console.log(updatedObj)
+    const id = userRatingForm.dataset.visitId
+    console.log(id)
+    fetch(`http://localhost:3000/user_ballparks/${id}`,{
+        method: 'PATCH',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(updatedObj)
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data)
+    })
+    userRatingForm.reset()
+
+
+
+
+
+
 
     
-// })
+})

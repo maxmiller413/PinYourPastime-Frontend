@@ -51,40 +51,38 @@ loginDiv.addEventListener('submit', event => {
         fetch(`http://localhost:3000/users/${username}`)
             .then(resp => resp.json())
             .then(data => {
+                // console.log(data)
                 divMain.style.display = 'block'
                 loginDiv.style.display = 'none'
                 wishlist.append(wishlistUl)
                 visitedDiv.append(visitedUl)
                 ballparks.append(ballparkUl)
-                data.ballparks.forEach(ballpark =>{
+                data.user_ballparks.forEach(ballpark =>{
+                    // console.log(ballpark.ballpark.home_team)
                     const ballparkLi = document.createElement('li')
-                    ballparkLi.dataset.id = ballpark.id 
-                    // console.log(data.user_ballparks[1].id)
-                    // ballparkLi.dataset.userBallparkId = visitId
-                    ballparkLi.textContent = ballpark.home_team
+                    ballparkLi.textContent = ballpark.ballpark.home_team
+                    ballparkLi.dataset.userBallparkId = ballpark.id 
                     ballparkUl.append(ballparkLi)
-                    // data.user_ballparks.forEach(visit => {
-                    //     console.log(data)
-                    //     ballparkLi.dataset.userBallparkId = visit.id 
-                    // })
-
+                    ballparkLi.dataset.id = ballpark.ballpark.id 
                 })
+
+                
                 data.user_ballparks.forEach(visit => {
+
+                    // console.log(visit)
                     if(visit.wishlist === true){
                         const ballparkId = visit.ballpark_id
-                        // console.log(data)
+                        // console.log(ballparkId)
                         const wishLi = document.createElement('li')
-                        wishLi.innerText = data.ballparks[(ballparkId)- 1].name 
+                        wishLi.innerText = visit.ballpark.name
                         wishlistUl.append(wishLi)
                     } else if (visit.visited === true){
                         const ballparkId = visit.ballpark_id
                         const visitLi = document.createElement('li')
-                        visitLi.innerText = data.ballparks[(ballparkId)- 1].name 
+                        visitLi.innerText = visit.ballpark.name
                         visitedUl.append(visitLi)
                     }
-                    
                 })
-                
             })
     }
 })
@@ -110,7 +108,7 @@ ballparks.addEventListener('click', event => {
 
 /*****************User Rating Form Listener******************************/
 
-userRatingForm.addEventListener('submit', event => {
+// userRatingForm.addEventListener('submit', event => {
 
     
-})
+// })

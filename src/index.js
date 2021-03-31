@@ -8,6 +8,7 @@ const visitedDiv = document.querySelector('div#visited')
 const ballparks = document.querySelector('header.main-title')
 const ballparkUl = document.createElement('ul')
 const userRatingForm = document.querySelector('form#user-rating')
+const username = loginDiv.querySelector('input#login-form').value
 
 const parkDetails = document.createElement('div')
 const img = document.createElement('img')
@@ -42,13 +43,14 @@ loginDiv.addEventListener('submit', event => {
                 // divMain.dataset.id = data.id 
                 divMain.style.display = 'block'
                 loginDiv.style.display = 'none'
-                
+
             })
     }
 /*****************User Login Listener******************************/
     if (event.target.matches('form#user-login')) {
-        const username = loginDiv.querySelector('input#login-form').value
+        
         // console.log(username)
+
         fetch(`http://localhost:3000/users/${username}`)
             .then(resp => resp.json())
             .then(data => {
@@ -77,7 +79,7 @@ loginDiv.addEventListener('submit', event => {
                         const wishLi = document.createElement('li')
                         wishLi.innerText = visit.ballpark.name
                         wishlistUl.append(wishLi)
-                    } else if (visit.visited === true){
+                    } if (visit.visited === true){
                         const ballparkId = visit.ballpark_id
                         const visitLi = document.createElement('li')
                         visitLi.innerText = visit.ballpark.name
@@ -119,9 +121,10 @@ userRatingForm.addEventListener('submit', event => {
     const price = event.target.overall_price_rating.value
     const crowd = event.target.crowd_rating.value
     const comments = event.target.comments.value
-    const visited = event.target.visited.value
-    const wishlist = event.target.wishlist.value
-    // console.log(overall)
+    const visited = event.target.querySelector('select#visited-bool').value
+    const wishlist = event.target.querySelector('select#wishlist-bool').value
+    // console.log(event.target.querySelector('select').value)
+
 
     const updatedObj = {
 

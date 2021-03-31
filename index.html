@@ -77,11 +77,30 @@
           <input type="text" name="comments" value="" placeholder="Comments" />
           <br />
 
-          <input type="checkbox" name="wishlist" value="Wishlish"/>
+          <!-- <input type="checkbox" name="wishlist" value="Wishlist"/>
           <label for="wishlist">Wishlish</label><br>
 
           <input type="checkbox" name="visited" value="Visited" placeholder="Visited"/>
-          <label for="visited">Visited</label><br>
+          <label for="visited">Visited</label><br> -->
+           
+          <label>
+            Wishlist 
+            <select id='wishlist-bool'>
+              <option name="wishlist" value="wishlist">---</option>
+              <option value='true'>Yes</option>
+              <option value='false'>No</option>
+            </select>
+         </label>
+        
+
+          <label>
+            Visited
+            <select id='visited-bool'>
+              <option name="visited" value="visited">---</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </label>
 
           <input type="submit" name="submit" value="Create New Visit" class="submit" />
         </form>

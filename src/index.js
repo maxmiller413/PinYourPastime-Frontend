@@ -7,6 +7,7 @@ const wishlist = document.querySelector('div#wishlist')
 const visitedDiv = document.querySelector('div#visited')
 const ballparks = document.querySelector('header.main-title')
 const ballparkUl = document.createElement('ul')
+const userRatingForm = document.querySelector('form#user-rating')
 
 const parkDetails = document.createElement('div')
 const img = document.createElement('img')
@@ -50,23 +51,27 @@ loginDiv.addEventListener('submit', event => {
         fetch(`http://localhost:3000/users/${username}`)
             .then(resp => resp.json())
             .then(data => {
-                console.log(data.ballparks)
                 divMain.style.display = 'block'
                 loginDiv.style.display = 'none'
                 wishlist.append(wishlistUl)
                 visitedDiv.append(visitedUl)
                 ballparks.append(ballparkUl)
                 data.ballparks.forEach(ballpark =>{
-                    // console.log(ballpark.name)
                     const ballparkLi = document.createElement('li')
                     ballparkLi.dataset.id = ballpark.id 
+                    // console.log(data.user_ballparks[1].id)
+                    // ballparkLi.dataset.userBallparkId = visitId
                     ballparkLi.textContent = ballpark.home_team
                     ballparkUl.append(ballparkLi)
+                    // data.user_ballparks.forEach(visit => {
+                    //     console.log(data)
+                    //     ballparkLi.dataset.userBallparkId = visit.id 
+                    // })
 
                 })
                 data.user_ballparks.forEach(visit => {
                     if(visit.wishlist === true){
-                        const ballparkId = (visit.ballpark_id)
+                        const ballparkId = visit.ballpark_id
                         // console.log(data)
                         const wishLi = document.createElement('li')
                         wishLi.innerText = data.ballparks[(ballparkId)- 1].name 
@@ -102,3 +107,10 @@ ballparks.addEventListener('click', event => {
     }
 })
 
+
+/*****************User Rating Form Listener******************************/
+
+userRatingForm.addEventListener('submit', event => {
+
+    
+})

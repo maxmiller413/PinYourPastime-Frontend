@@ -8,7 +8,7 @@ const visitedDiv = document.querySelector('div#visited')
 const ballparks = document.querySelector('header.main-title')
 const ballparkUl = document.createElement('ul')
 const userRatingForm = document.querySelector('form#user-rating')
-const username = loginDiv.querySelector('input#login-form').value
+// const username = loginDiv.querySelector('input#login-form').value
 
 const parkDetails = document.createElement('div')
 const img = document.createElement('img')
@@ -21,7 +21,7 @@ const team = document.createElement('p')
 ballparks.append(parkDetails)
 parkDetails.append(parkName, nickname, parkLocation, team, yearOpened, capacity, img)
 
-
+// console.log(username)
 
 /********************New User Form Listener***************************/
 loginDiv.addEventListener('submit', event => {
@@ -48,7 +48,8 @@ loginDiv.addEventListener('submit', event => {
     }
 /*****************User Login Listener******************************/
     if (event.target.matches('form#user-login')) {
-        
+        const username = loginDiv.querySelector('input#login-form').value
+        divMain.dataset.username = username
         // console.log(username)
 
         fetch(`http://localhost:3000/users/${username}`)
@@ -114,6 +115,7 @@ ballparks.addEventListener('click', event => {
 /*****************User Rating Form Listener******************************/
 
 userRatingForm.addEventListener('submit', event => {
+    
     event.preventDefault()
     const overall = event.target.overall_experience.value
     const concession = event.target.concession_rating.value
@@ -124,7 +126,6 @@ userRatingForm.addEventListener('submit', event => {
     const visited = event.target.querySelector('select#visited-bool').value
     const wishlist = event.target.querySelector('select#wishlist-bool').value
     // console.log(event.target.querySelector('select').value)
-
 
     const updatedObj = {
 
@@ -137,9 +138,9 @@ userRatingForm.addEventListener('submit', event => {
         visited: visited,
         wishlist: wishlist
     }
-    console.log(updatedObj)
+    // console.log(updatedObj)
     const id = userRatingForm.dataset.visitId
-    console.log(id)
+    // console.log(id)
     fetch(`http://localhost:3000/user_ballparks/${id}`,{
         method: 'PATCH',
         headers: {
@@ -149,15 +150,42 @@ userRatingForm.addEventListener('submit', event => {
     })
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
+        renderLists()
     })
-    userRatingForm.reset()
-
-
-
-
-
-
-
     
+    
+    
+    
+    event.target.reset()
 })
+
+
+function renderLists(){
+    wishlistUl.innerHTML = ' '
+    visitedUl.innerHTML = ' '
+    const username = divMain.dataset.username
+    // console.log(username)
+    fetch(`http://localhost:3000/users/${username}`)
+    .then(resp => resp.json())
+    .then(data => {
+        // console.log(data)
+    data.user_ballparks.forEach(visit => {
+
+        // console.log(visit)
+        if(visit.wishlist === true){
+            const ballparkId = visit.ballpark_id
+            // console.log(ballparkId)
+            const wishLi = document.createElement('li')
+            wishLi.innerText = visit.ballpark.name
+            wishlistUl.append(wishLi)
+        } if (visit.visited === true){
+            const ballparkId = visit.ballpark_id
+            const visitLi = document.createElement('li')
+            visitLi.innerText = visit.ballpark.name
+            visitedUl.append(visitLi)
+        }
+    })
+
+})
+
+}

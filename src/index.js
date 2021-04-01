@@ -10,6 +10,8 @@ const ballparkUl = document.createElement('ul')
 const userRatingForm = document.querySelector('form#user-rating')
 const mainHeader = document.querySelector('div#main-header')
 const topRated = document.querySelector('div#top-rated')
+
+
 // const username = loginDiv.querySelector('input#login-form').value
 
 const updateForm = document.createElement('form')
@@ -113,6 +115,8 @@ ballparks.addEventListener('click', event => {
     if(event.target.matches('li')){
         topRated.innerHTML = ' '
         ballParkVisit(event.target.dataset.userBallparkId)
+        const ballparksDiv = document.querySelector('#inner-main > header > div')
+        ballparksDiv.id= 'ballpark-details'
         
         fetch(`http://localhost:3000/ballparks/${event.target.dataset.id}`)
         .then(resp => resp.json())
@@ -120,13 +124,14 @@ ballparks.addEventListener('click', event => {
             // console.log(data)
             userRatingForm.dataset.ballparkId = event.target.dataset.id
             userRatingForm.dataset.visitId = event.target.dataset.userBallparkId
+            // ballparksDiv.id= 'ballpark-details'
             img.src = data.image
-            parkLocation.innerText = data.location
-            parkName.innerText = data.name 
-            yearOpened.innerText = data.year_opened
-            capacity.innerText = data.capacity
+            parkLocation.innerText = `Location: ${data.location}`
+            parkName.innerText = `Ballpark: ${data.name}`
+            yearOpened.innerText = `Year Opened: ${data.year_opened}`
+            capacity.innerText = `Capacity: ${data.capacity}`
             nickname.innerText = data.nickname
-            team.innerText = data.home_team
+            team.innerText = `Home of the ${data.home_team}`
         })
         
         console.log(event.target.dataset.userBallparkId)

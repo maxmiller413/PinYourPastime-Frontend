@@ -19,17 +19,26 @@ body {
 
 #visited {
     background: orange; 
+    text-align: center;
+    font-size: medium;
+
 }
 
 .main-title {
     background: violet;
+    text-align: center;
+    font-size: large;
 }
 
 #wishlist {
     background: blue;
+    text-align: center;
+    font-size: medium;
 }
 #top-rated {
     background: green;
+    text-align: center;
+    font-size: medium;
 }
 
 #inner-main {

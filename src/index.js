@@ -157,7 +157,7 @@ userRatingForm.addEventListener('submit', event => {
     .then(resp => resp.json())
     .then(data => {
 
-        console.log(data)
+        // console.log(data)
         
         // if(data.ballpark_id == document.querySelector(`#wishlist > ul > li:nth-child(${id})`)){
 
@@ -168,84 +168,73 @@ userRatingForm.addEventListener('submit', event => {
         visitedUl.innerHTML = ` `
         wishList()
         visitList()
-    
-        
-       
-    
     })
     
     
     
     
-    event.target.reset()
+    // event.target.reset()
 })
 
 
-function wishList() {
+const wishList = () => {
     const username = divMain.dataset.username
-    fetch(`http://localhost:3000/users/${username}`)
+    console.log(username)
+    return( fetch(`http://localhost:3000/users/${username}`)
     .then(resp => resp.json())
     .then(data => {
-
-
         console.log(data)
         data.wish_lists.forEach(wl => {
-
             const li = document.createElement('li')
             li.textContent = wl
             wishlistUl.append(li)
-
         })
-    })
-
+    }).catch(errors => console.log(errors.message))
+    )
 }
 
-function visitList() {
+const visitList = () => {
     const username = divMain.dataset.username
-    fetch(`http://localhost:3000/users/${username}`)
-    .then(resp => resp.json())
-    .then(data => {
-
-
-        console.log(data)
-        data.visit_lists.forEach(vl => {
-
-            const li = document.createElement('li')
-            li.textContent = vl
-            visitedUl.append(li)
-
-        })
-    })
-
-}
-
-
-function renderLists(){
-    wishlistUl.innerHTML = ' '
-    visitedUl.innerHTML = ' '
-    const username = divMain.dataset.username
-    // console.log(username)
-    fetch(`http://localhost:3000/users/${username}`)
+    return (fetch(`http://localhost:3000/users/${username}`)
     .then(resp => resp.json())
     .then(data => {
         // console.log(data)
-    data.user_ballparks.forEach(visit => {
-
-        // console.log(visit)
-        if(visit.wishlist === true){
-            const ballparkId = visit.ballpark_id
-            // console.log(ballparkId)
-            const wishLi = document.createElement('li')
-            wishLi.innerText = visit.ballpark.name
-            wishlistUl.append(wishLi)
-        } if (visit.visited === true){
-            const ballparkId = visit.ballpark_id
-            const visitLi = document.createElement('li')
-            visitLi.innerText = visit.ballpark.name
-            visitedUl.append(visitLi)
-        }
-    })
-
-})
-
+        data.visit_lists.forEach(vl => {
+            const li = document.createElement('li')
+            li.textContent = vl
+            visitedUl.append(li)
+        })
+    }).catch(errors => console.log(errors.message))
+    )
 }
+
+
+// function renderLists(){
+//     wishlistUl.innerHTML = ' '
+//     visitedUl.innerHTML = ' '
+//     const username = divMain.dataset.username
+//     // console.log(username)
+//     fetch(`http://localhost:3000/users/${username}`)
+//     .then(resp => resp.json())
+//     .then(data => {
+//         // console.log(data)
+//     data.user_ballparks.forEach(visit => {
+
+//         // console.log(visit)
+//         if(visit.wishlist === true){
+//             const ballparkId = visit.ballpark_id
+//             // console.log(ballparkId)
+//             const wishLi = document.createElement('li')
+//             wishLi.innerText = visit.ballpark.name
+//             wishlistUl.append(wishLi)
+//         } if (visit.visited === true){
+//             const ballparkId = visit.ballpark_id
+//             const visitLi = document.createElement('li')
+//             visitLi.innerText = visit.ballpark.name
+//             visitedUl.append(visitLi)
+//         }
+//     })
+
+// })
+
+// }

@@ -8,8 +8,10 @@ const visitedDiv = document.querySelector('div#visited')
 const ballparks = document.querySelector('header.main-title')
 const ballparkUl = document.createElement('ul')
 const userRatingForm = document.querySelector('form#user-rating')
+const mainHeader = document.querySelector('div#main-header')
 // const username = loginDiv.querySelector('input#login-form').value
 
+const updateForm = document.createElement('form')
 const parkDetails = document.createElement('div')
 const img = document.createElement('img')
 const parkLocation = document.createElement('p')
@@ -29,6 +31,8 @@ loginDiv.addEventListener('submit', event => {
     if (event.target.matches('form#new-user-form')) {
         const user = loginDiv.querySelector('input#new-user-input').value
         const favoriteTeam = loginDiv.querySelector('input#new-user-favorite-team').value
+        divMain.dataset.favTeam = favoriteTeam
+        // divMain.dataset.favTeam = favoriteTeam
         fetch('http://localhost:3000/users', {
             method: 'POST',
             headers: { 'Content-Type': "application/json" },
@@ -41,21 +45,8 @@ loginDiv.addEventListener('submit', event => {
             .then(data => {
                 console.log(data)
                 // divMain.dataset.id = data.id 
-                divMain.style.display = 'block'
-                loginDiv.style.display = 'none'
-
-            })
-    }
-/*****************User Login Listener******************************/
-    if (event.target.matches('form#user-login')) {
-        const username = loginDiv.querySelector('input#login-form').value
-        divMain.dataset.username = username
-        // console.log(username)
-
-        fetch(`http://localhost:3000/users/${username}`)
-            .then(resp => resp.json())
-            .then(data => {
-                // console.log(data)
+                divMain.dataset.username = data.name
+                divMain.dataset.favTeam = data.favorite_team
                 divMain.style.display = 'block'
                 loginDiv.style.display = 'none'
                 wishlist.append(wishlistUl)
@@ -69,30 +60,48 @@ loginDiv.addEventListener('submit', event => {
                     ballparkUl.append(ballparkLi)
                     ballparkLi.dataset.id = ballpark.ballpark.id 
                 })
-
-
-                // data.user_ballparks.forEach(visit => {
-
-                //     // console.log(visit)
-                //     if(visit.wishlist === true){
-                //         // const ballparkId = visit.ballpark_id
-                //         // console.log(ballparkId)
-                //         const wishLi = document.createElement('li')
-                //         wishLi.dataset.ballparkId = visit.ballpark_id
-                //         wishLi.innerText = visit.ballpark.name
-                //         wishlistUl.append(wishLi)
-                //     } if (visit.visited === true){
-                //         // const ballparkId = visit.ballpark_id
-                //         const visitLi = document.createElement('li')
-                //         visitLi.dataset.ballparkId = visit.ballpark_id
-                //         visitLi.innerText = visit.ballpark.name
-                //         visitedUl.append(visitLi)
-                //     }
-                // })
                 wishlistUl.innerHTML = ` `
                 visitedUl.innerHTML = ` `
+                updateForm.innerHTML = ' '
                 wishList()
                 visitList()
+                favoriteTeamUpdateForm()
+
+
+            })
+    }
+/*****************User Login Listener******************************/
+    if (event.target.matches('form#user-login')) {
+        const username = loginDiv.querySelector('input#login-form').value
+        divMain.dataset.username = username
+        // const favoriteTeam = loginDiv.querySelector('input#new-user-favorite-team').value
+        
+        // console.log(username)
+
+        fetch(`http://localhost:3000/users/${username}`)
+            .then(resp => resp.json())
+            .then(data => {
+                // console.log(data.favorite_team)
+                divMain.dataset.favTeam = data.favorite_team
+                divMain.style.display = 'block'
+                loginDiv.style.display = 'none'
+                wishlist.append(wishlistUl)
+                visitedDiv.append(visitedUl)
+                ballparks.append(ballparkUl)
+                data.user_ballparks.forEach(ballpark =>{
+                    // console.log(ballpark.ballpark.home_team)
+                    const ballparkLi = document.createElement('li')
+                    ballparkLi.textContent = ballpark.ballpark.home_team
+                    ballparkLi.dataset.userBallparkId = ballpark.id 
+                    ballparkUl.append(ballparkLi)
+                    ballparkLi.dataset.id = ballpark.ballpark.id 
+                })
+                wishlistUl.innerHTML = ` `
+                visitedUl.innerHTML = ` `
+                updateForm.innerHTML = ' '
+                wishList()
+                visitList()
+                favoriteTeamUpdateForm()
             })
     }
 })
@@ -156,34 +165,24 @@ userRatingForm.addEventListener('submit', event => {
     })
     .then(resp => resp.json())
     .then(data => {
-
-        // console.log(data)
-        
-        // if(data.ballpark_id == document.querySelector(`#wishlist > ul > li:nth-child(${id})`)){
-
-        //     const ballparkRemove = document.querySelector(`#wishlist > ul > li:nth-child(${id})`)
-        //     // ballparkRemove = ''
-        // }
         wishlistUl.innerHTML = ` `
         visitedUl.innerHTML = ` `
+        updateForm.innerHTML = ' '
+        favoriteTeamUpdateForm()
         wishList()
         visitList()
     })
-    
-    
-    
-    
     // event.target.reset()
 })
 
 
 const wishList = () => {
     const username = divMain.dataset.username
-    console.log(username)
+    // console.log(username)
     return( fetch(`http://localhost:3000/users/${username}`)
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         data.wish_lists.forEach(wl => {
             const li = document.createElement('li')
             li.textContent = wl
@@ -208,33 +207,42 @@ const visitList = () => {
     )
 }
 
+const favoriteTeamUpdateForm = () => {
+    // divMain.dataset.favTeam = data.favorite_team
+    const favTeam = divMain.dataset.favTeam
+    const username = divMain.dataset.username
+    // console.log(username)
+            updateForm.innerHTML = `
+                <input type="text" id="favorite-team" value='${favTeam}' placeholder="Set Your New Fav Team">
+                <input type='submit' name='submit' value="Update Fav Team" >
+                `
+            mainHeader.append(updateForm)
 
-// function renderLists(){
-//     wishlistUl.innerHTML = ' '
-//     visitedUl.innerHTML = ' '
-//     const username = divMain.dataset.username
-//     // console.log(username)
-//     fetch(`http://localhost:3000/users/${username}`)
-//     .then(resp => resp.json())
-//     .then(data => {
-//         // console.log(data)
-//     data.user_ballparks.forEach(visit => {
+    mainHeader.addEventListener('submit', event => {
+            event.preventDefault()
+            const newFav = { favorite_team: event.target['favorite-team'].value}
+            const update = document.querySelector('input#favorite-team').value
+            // console.log(update)
+        if(event.target.matches('form')){
+            
+            fetch(`http://localhost:3000/users/${username}`, {
 
-//         // console.log(visit)
-//         if(visit.wishlist === true){
-//             const ballparkId = visit.ballpark_id
-//             // console.log(ballparkId)
-//             const wishLi = document.createElement('li')
-//             wishLi.innerText = visit.ballpark.name
-//             wishlistUl.append(wishLi)
-//         } if (visit.visited === true){
-//             const ballparkId = visit.ballpark_id
-//             const visitLi = document.createElement('li')
-//             visitLi.innerText = visit.ballpark.name
-//             visitedUl.append(visitLi)
-//         }
-//     })
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(newFav)
 
-// })
-
-// }
+                })
+                .then(resp => resp.json())
+                .then(data => {
+                    wishlistUl.innerHTML = ` `
+                    visitedUl.innerHTML = ` `
+                    wishList()
+                    visitList()
+                    update.textContent = data.favorite_team
+            })
+            
+        }
+    })
+}

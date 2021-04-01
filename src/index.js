@@ -178,7 +178,10 @@ userRatingForm.addEventListener('submit', event => {
         favoriteTeamUpdateForm()
         wishList()
         visitList()
+        topRated.innerHTML = ' '
+        ballParkVisit(id)
     })
+    
     // event.target.reset()
 })
 
@@ -227,6 +230,7 @@ const favoriteTeamUpdateForm = () => {
 
     mainHeader.addEventListener('submit', event => {
             event.preventDefault()
+           
             const newFav = { favorite_team: event.target['favorite-team'].value}
             const update = document.querySelector('input#favorite-team').value
             // console.log(update)

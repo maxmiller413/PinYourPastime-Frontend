@@ -32,8 +32,8 @@ body {
     background: green;
 }
 
-#main-container {
-    height: auto;
+#inner-main {
+    height: 80vh;
     display: grid;
     grid-template-columns: 25% auto 25%;
     width: 100%;

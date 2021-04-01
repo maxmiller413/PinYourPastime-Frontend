@@ -18,10 +18,10 @@ const updateForm = document.createElement('form')
 const parkDetails = document.createElement('div')
 const img = document.createElement('img')
 const parkLocation = document.createElement('p')
-const parkName = document.createElement('h5')
+const parkName = document.createElement('h2')
 const yearOpened = document.createElement('p')
 const capacity = document.createElement('p')
-const nickname = document.createElement('h6')
+const nickname = document.createElement('h4')
 const team = document.createElement('p')
 ballparks.append(parkDetails)
 parkDetails.append(parkName, nickname, parkLocation, team, yearOpened, capacity, img)
@@ -127,7 +127,7 @@ ballparks.addEventListener('click', event => {
             // ballparksDiv.id= 'ballpark-details'
             img.src = data.image
             parkLocation.innerText = `Location: ${data.location}`
-            parkName.innerText = `Ballpark: ${data.name}`
+            parkName.innerText = `${data.name}`
             yearOpened.innerText = `Year Opened: ${data.year_opened}`
             capacity.innerText = `Capacity: ${data.capacity}`
             nickname.innerText = data.nickname

@@ -1,7 +1,18 @@
+
+li::before{
+    content: " ⚾ ";
+
+}
+
+li {
+    list-style: none;
+}
+
+
 body {
     margin: 0;
     font-family: monospace;
-  }
+}
 
 #main-wrapper {
     height: 100vh; 
@@ -15,7 +26,7 @@ body {
     background: #25ee54;
     opacity: .8;
     padding: 1rem;
-  }
+}
 
 #visited {
     background: orange; 

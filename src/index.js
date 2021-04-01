@@ -71,22 +71,28 @@ loginDiv.addEventListener('submit', event => {
                 })
 
 
-                data.user_ballparks.forEach(visit => {
+                // data.user_ballparks.forEach(visit => {
 
-                    // console.log(visit)
-                    if(visit.wishlist === true){
-                        const ballparkId = visit.ballpark_id
-                        // console.log(ballparkId)
-                        const wishLi = document.createElement('li')
-                        wishLi.innerText = visit.ballpark.name
-                        wishlistUl.append(wishLi)
-                    } if (visit.visited === true){
-                        const ballparkId = visit.ballpark_id
-                        const visitLi = document.createElement('li')
-                        visitLi.innerText = visit.ballpark.name
-                        visitedUl.append(visitLi)
-                    }
-                })
+                //     // console.log(visit)
+                //     if(visit.wishlist === true){
+                //         // const ballparkId = visit.ballpark_id
+                //         // console.log(ballparkId)
+                //         const wishLi = document.createElement('li')
+                //         wishLi.dataset.ballparkId = visit.ballpark_id
+                //         wishLi.innerText = visit.ballpark.name
+                //         wishlistUl.append(wishLi)
+                //     } if (visit.visited === true){
+                //         // const ballparkId = visit.ballpark_id
+                //         const visitLi = document.createElement('li')
+                //         visitLi.dataset.ballparkId = visit.ballpark_id
+                //         visitLi.innerText = visit.ballpark.name
+                //         visitedUl.append(visitLi)
+                //     }
+                // })
+                wishlistUl.innerHTML = ` `
+                visitedUl.innerHTML = ` `
+                wishList()
+                visitList()
             })
     }
 })
@@ -150,7 +156,22 @@ userRatingForm.addEventListener('submit', event => {
     })
     .then(resp => resp.json())
     .then(data => {
-        renderLists()
+
+        console.log(data)
+        
+        // if(data.ballpark_id == document.querySelector(`#wishlist > ul > li:nth-child(${id})`)){
+
+        //     const ballparkRemove = document.querySelector(`#wishlist > ul > li:nth-child(${id})`)
+        //     // ballparkRemove = ''
+        // }
+        wishlistUl.innerHTML = ` `
+        visitedUl.innerHTML = ` `
+        wishList()
+        visitList()
+    
+        
+       
+    
     })
     
     
@@ -158,6 +179,45 @@ userRatingForm.addEventListener('submit', event => {
     
     event.target.reset()
 })
+
+
+function wishList() {
+    const username = divMain.dataset.username
+    fetch(`http://localhost:3000/users/${username}`)
+    .then(resp => resp.json())
+    .then(data => {
+
+
+        console.log(data)
+        data.wish_lists.forEach(wl => {
+
+            const li = document.createElement('li')
+            li.textContent = wl
+            wishlistUl.append(li)
+
+        })
+    })
+
+}
+
+function visitList() {
+    const username = divMain.dataset.username
+    fetch(`http://localhost:3000/users/${username}`)
+    .then(resp => resp.json())
+    .then(data => {
+
+
+        console.log(data)
+        data.visit_lists.forEach(vl => {
+
+            const li = document.createElement('li')
+            li.textContent = vl
+            visitedUl.append(li)
+
+        })
+    })
+
+}
 
 
 function renderLists(){

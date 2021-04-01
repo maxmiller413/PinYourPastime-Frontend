@@ -9,6 +9,7 @@ const ballparks = document.querySelector('header.main-title')
 const ballparkUl = document.createElement('ul')
 const userRatingForm = document.querySelector('form#user-rating')
 const mainHeader = document.querySelector('div#main-header')
+const topRated = document.querySelector('div#top-rated')
 // const username = loginDiv.querySelector('input#login-form').value
 
 const updateForm = document.createElement('form')
@@ -99,8 +100,10 @@ loginDiv.addEventListener('submit', event => {
                 wishlistUl.innerHTML = ` `
                 visitedUl.innerHTML = ` `
                 updateForm.innerHTML = ' '
+                
                 wishList()
                 visitList()
+
                 favoriteTeamUpdateForm()
             })
     }
@@ -108,6 +111,8 @@ loginDiv.addEventListener('submit', event => {
 /*****************Ballparks Listener******************************/
 ballparks.addEventListener('click', event => {
     if(event.target.matches('li')){
+        topRated.innerHTML = ' '
+        ballParkVisit(event.target.dataset.userBallparkId)
         
         fetch(`http://localhost:3000/ballparks/${event.target.dataset.id}`)
         .then(resp => resp.json())
@@ -123,6 +128,8 @@ ballparks.addEventListener('click', event => {
             nickname.innerText = data.nickname
             team.innerText = data.home_team
         })
+        
+        console.log(event.target.dataset.userBallparkId)
     }
 })
 
@@ -242,7 +249,69 @@ const favoriteTeamUpdateForm = () => {
                     visitList()
                     update.textContent = data.favorite_team
             })
-            
         }
     })
 }
+
+
+const ballParkVisit = (id) => {
+    // ballparkLi.dataset.userBallparkId
+    console.log(id)
+
+    fetch(`http://localhost:3000/user_ballparks/${id}`)
+        .then(resp => resp.json())
+        .then(data => {
+            const parkName = data.ballpark.name 
+            console.log(data)
+            const overall = data.overall_experience
+            const concession = data.concession_rating
+            const beauty = data.beauty_rating
+            const price = data.overall_price_rating
+            const crowd = data.crowd_rating
+            const comments = data.comments
+
+            const h2 = document.createElement('h2')
+            const overallP = document.createElement('li')
+            const conP = document.createElement('li')
+            const beautyP = document.createElement('li')
+            const priceP = document.createElement('li')
+            const crowdP = document.createElement('li')
+            const commentBox = document.createElement('text-area')
+            const ul = document.createElement('ul')
+            
+
+            h2.textContent = parkName
+            overallP.textContent =`Overall Rating: ${overall}`
+            conP.textContent = `Concession Rating: ${concession}`
+            beautyP.textContent = `Beauty Rating: ${beauty}`
+            priceP.textContent = `Overal Price Rating: ${price}`
+            crowdP.innerHTML = `Crowd Rating: ${crowd} <br><br>`
+            commentBox.innerHTML = `Comments: <br> ${comments}`
+            topRated.append(h2)
+            topRated.append(ul)
+            ul.append(overallP, conP, beautyP, priceP, crowdP, commentBox)
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // console.log(ballparkLi.dataset.userBallparkId)
+
+
+}
+
+// ballParkVisit()

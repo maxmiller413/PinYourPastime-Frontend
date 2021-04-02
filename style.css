@@ -20,13 +20,13 @@ body {
 
 #main-wrapper {
     margin: auto;
-    height: 100vh; 
+    height: 205vh; 
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 15%  auto 15%;
     background-image: url("https://wallpapercave.com/wp/OELdkBa.jpg");
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-size: cover;
 }
 #main-header {
     color: rgb(0, 7, 98);
@@ -38,12 +38,13 @@ body {
     /* background-image: url(https://www.freewebheaders.com/wp-content/gallery/baseball/thumbs/thumbs_baseball-ball-header.jpg); */
     background: url(https://lh3.googleusercontent.com/proxy/R-RDyIb0DOdfZNzVg45p6s-eXxzwI6DsihdLOR0h0msFnMK1iXh7VG6Mne3tScuJPzWaPT6hGqdTQXhWwIqy5Vix68Hnh2HGOio-Zvtm8-2z-wf7A4tXZT2w);
     background-position: center;
+    background-size: auto;
     background-repeat: no-repeat;
-    background-size: contain;
 }
 
 #visited {
-    background: rgba(251, 163, 0, 0.774); 
+    background: rgba(68, 70, 33, 0.431);
+    /* border: 1px solid yellow; */
     text-align: center;
     font-size: medium;
 
@@ -51,31 +52,35 @@ body {
 
 .main-title {
     background: rgba(70, 33, 70, 0.431);
+    /* border: 1px solid yellow; */
     text-align: center;
     font-size: large;
 }
 
 #wishlist {
-    background: rgba(0, 0, 255, 0.705);
+    background: rgba(70, 33, 42, 0.431);
+    /* border: 1px solid blue; */
     text-align: center;
     font-size: medium;
 }
 #top-rated {
-    background: rgba(0, 128, 0, 0.65);
+    background: rgba(70, 33, 70, 0.431);
+    /* border: 1px solid green; */
     text-align: center;
     font-size: medium;
 }
 
 #inner-main {
-    height: 80vh;
+    height: auto;
     display: grid;
     grid-template-columns: 25% auto 25%;
     width: 100%;
-    background: rgba(255, 0, 0, 0.555);
+    background: rgba(70, 33, 70, 0.431);
+    /* border: 1px solid red; */
 }
 
 .area-container {
-    height: 100%;
+    height: auto;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
@@ -87,6 +92,7 @@ body {
 }
 
 #login-container{
+    font-size: 15px;
     color: rgb(255, 253, 253);
     /* display: flex; */
     /* justify-content: center; */
@@ -96,11 +102,21 @@ body {
     background-color: #0004ff93;
 }
 
-#main-container{
-    background-image: url("https://wallpapercave.com/wp/OELdkBa.jpg");
+
+#ballpark-image {
+
+    width: 400px !important;
+
 }
 
-/* #ballpark-details {
+.fav-team-form{
 
-    
-} */
+    position: absolute;
+    top: 3em;
+    left: 10em;
+
+}
+
+#user-rating{
+    margin-top: 10em;
+}

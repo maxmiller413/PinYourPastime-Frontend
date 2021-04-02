@@ -18,15 +18,15 @@
     <div id='login-container'>
 
       <form id='new-user-form'><label> New Username </label>
-        <input type="text" value="New User" id='new-user-input'><br>
+        <input type="text" value="" id='new-user-input'placeholder='New Username'> <br>
         <label> Favorite Team </label>
-        <input type="text" value="Favorite Team" id='new-user-favorite-team'><br><br>
+        <input type="text" value="" id='new-user-favorite-team'placeholder='Favorite Team'><br><br>
         <input type="submit" value="Submit">
-      </form>
+      </form><br>
 
       <form id='user-login'>
         <label> Login </label>
-        <input type="text" id="login-form" value="Login"><br><br>
+        <input type="text" id="login-form" value="" placeholder='Username'><br><br>
         <input type="submit" value="Submit">
       </form>
 
@@ -37,6 +37,59 @@
       <div id='inner-main'>
       <div id="top-rated">
         <h2>Field Visit Rating</h2>
+        <div class="top-rated-container"></div>
+        <div id='form'>
+          <form id='user-rating'>
+            <h2>Log a visit!</h2>
+  
+            <input type="number" min=“0” max=“10” name="overall_experience" value="" placeholder="Overall Experience" />
+            <br />
+  
+            <input type="number" min=“0” max=“10” name="concession_rating" value="" placeholder="Concession Rating" />
+            <br />
+  
+            <input type="number" min=“0” max=“10” name="beauty_rating" value="" placeholder="Beauty Rating" />
+            <br />
+  
+            <input type="number" min=“0” max=“10” name="overall_price_rating" value=""
+              placeholder="Overall Price Rating" />
+            <br />
+  
+            <input type="number" min=“0” max=“10” name="crowd_rating" value="" placeholder="Crowd Rating" />
+            <br />
+  
+            <input type="text" name="comments" value="" placeholder="Comments" />
+            <br />
+  
+            <!-- <input type="checkbox" name="wishlist" value="Wishlist"/>
+            <label for="wishlist">Wishlish</label><br>
+  
+            <input type="checkbox" name="visited" value="Visited" placeholder="Visited"/>
+            <label for="visited">Visited</label><br> -->
+             <br>
+            <label>
+              Wishlist
+              <select id='wishlist-bool'>
+                <option name="wishlist" value="wishlist">---</option>
+                <option value='true'>Yes</option>
+                <option value='false'>No</option>
+              </select>
+           </label><br><br>
+          
+  
+            <label>
+              Visited
+              <select id='visited-bool'>
+                <option name="visited" value="visited">---</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </label><br><br>
+  
+            <input type="submit" name="submit" value="Log a visit" class="submit" />
+          </form>
+        </div>
+       
       </div>
       <header class='main-title'>
         <h2>Ballparks!</h2>
@@ -54,7 +107,7 @@
 
     </div>
 
-      <div id='form'>
+      <!-- <div id='form'>
         <form id='user-rating'>
           <h2>Log a visit!</h2>
 
@@ -82,7 +135,7 @@
 
           <input type="checkbox" name="visited" value="Visited" placeholder="Visited"/>
           <label for="visited">Visited</label><br> -->
-           <br>
+           <!-- <br>
           <label>
             Wishlist
             <select id='wishlist-bool'>
@@ -90,10 +143,10 @@
               <option value='true'>Yes</option>
               <option value='false'>No</option>
             </select>
-         </label><br><br>
+         </label><br><br> -->
         
 
-          <label>
+          <!-- <label>
             Visited
             <select id='visited-bool'>
               <option name="visited" value="visited">---</option>
@@ -103,8 +156,8 @@
           </label><br><br>
 
           <input type="submit" name="submit" value="Log a visit" class="submit" />
-        </form>
-      </div>
+        </form> --> -->
+      <!-- </div> -->
     </div>
   </div>
 

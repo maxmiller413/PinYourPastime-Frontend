@@ -9,14 +9,16 @@ const ballparks = document.querySelector('header.main-title')
 const ballparkUl = document.createElement('ul')
 const userRatingForm = document.querySelector('form#user-rating')
 const mainHeader = document.querySelector('div#main-header')
-const topRated = document.querySelector('div#top-rated')
+const topRated = document.querySelector('div.top-rated-container')
 
 
 // const username = loginDiv.querySelector('input#login-form').value
 
 const updateForm = document.createElement('form')
+updateForm.className= 'fav-team-form'
 const parkDetails = document.createElement('div')
 const img = document.createElement('img')
+img.id= "ballpark-image"
 const parkLocation = document.createElement('p')
 const parkName = document.createElement('h2')
 const yearOpened = document.createElement('p')
@@ -193,7 +195,7 @@ userRatingForm.addEventListener('submit', event => {
         ballParkVisit(id)
     })
     
-    // event.target.reset()
+    event.target.reset()
 })
 
 /*****************Wish List Render******************************/

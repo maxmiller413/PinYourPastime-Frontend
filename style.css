@@ -85,8 +85,8 @@ body {
     /* border: 1px solid green; */
     text-align: center;
     font-size: 13pt;
-    color: #000000;
-    text-shadow: 2px 2px 8px rgb(238, 255, 0);
+    color: #041800;
+    text-shadow: 2px 2px 8px rgb(255, 0, 200);
 }
 
 #inner-main {
@@ -155,6 +155,7 @@ body {
 }
 
 .top-rated-container{
-    font-size: 12pt;
-    color: rgb(2, 0, 116);
+    font-size: 13pt;
+    color: #010050;
+    text-shadow: 2px 2px 8px rgb(238, 255, 0);
 }

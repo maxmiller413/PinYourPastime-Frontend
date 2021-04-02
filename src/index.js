@@ -255,7 +255,7 @@ const favoriteTeamUpdateForm = () => {
     const username = divMain.dataset.username
     // console.log(username)
             updateForm.innerHTML = `
-                <input type="text" id="favorite-team" value='${favTeam}' placeholder="Set Your New Fav Team">
+                <label id='updated-favorite-team'>Favorite Team: ${favTeam}</label><br><input type="text" id="favorite-team" value='${favTeam}' placeholder="Set Your New Fav Team">
                 <input type='submit' name='submit' value="Update Fav Team" >
                 `
             mainHeader.append(updateForm)
@@ -265,6 +265,10 @@ const favoriteTeamUpdateForm = () => {
            
             const newFav = { favorite_team: event.target['favorite-team'].value}
             const update = document.querySelector('input#favorite-team').value
+
+            const updateLabel = document.querySelector('label#updated-favorite-team')
+                    updateLabel.innerHTML = `Favorite Team: ${update}`
+
             // console.log(update)
         if(event.target.matches('form')){
             
@@ -283,7 +287,8 @@ const favoriteTeamUpdateForm = () => {
                     visitedUl.innerHTML = ` `
                     wishList()
                     visitList()
-                    update.textContent = data.favorite_team
+                    // update.textContent = data.favorite_team
+                    
             })
         }
     })

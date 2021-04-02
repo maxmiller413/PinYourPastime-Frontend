@@ -12,7 +12,8 @@ const mainHeader = document.querySelector('div#main-header')
 const topRated = document.querySelector('div.top-rated-container')
 
 
-// const music = document.querySelector('audio#fuckingaudio')
+const music = document.querySelector('audio#fuckingaudio').autoplay
+// music.play()
 
 // console.log(music)
 

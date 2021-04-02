@@ -12,6 +12,10 @@ const mainHeader = document.querySelector('div#main-header')
 const topRated = document.querySelector('div.top-rated-container')
 
 
+// const music = document.querySelector('audio#fuckingaudio')
+
+// console.log(music)
+
 // const username = loginDiv.querySelector('input#login-form').value
 
 const updateForm = document.createElement('form')
@@ -77,6 +81,7 @@ loginDiv.addEventListener('submit', event => {
     }
 /*****************User Login Listener******************************/
     if (event.target.matches('form#user-login')) {
+       
         const username = loginDiv.querySelector('input#login-form').value
         divMain.dataset.username = username
         // const favoriteTeam = loginDiv.querySelector('input#new-user-favorite-team').value
@@ -101,6 +106,7 @@ loginDiv.addEventListener('submit', event => {
                     ballparkLi.dataset.userBallparkId = ballpark.id 
                     ballparkUl.append(ballparkLi)
                     ballparkLi.dataset.id = ballpark.ballpark.id 
+
                 })
                 wishlistUl.innerHTML = ` `
                 visitedUl.innerHTML = ` `
@@ -224,6 +230,7 @@ const visitList = () => {
         // console.log(data)
         data.visit_lists.forEach(vl => {
             const li = document.createElement('li')
+            li. className= 'visit-li'
             li.textContent = vl
             visitedUl.append(li)
         })

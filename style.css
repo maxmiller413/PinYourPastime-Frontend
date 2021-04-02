@@ -1,4 +1,8 @@
 
+.visit-li::before{
+    content: " 📌 ";
+}
+
 .ballpark-list::before{
     content: " ⚾ ";
 
@@ -46,7 +50,7 @@ body {
     background: rgba(68, 70, 33, 0.431);
     /* border: 1px solid yellow; */
     text-align: center;
-    font-size: medium;
+    font-size: 11pt;
 
 }
 
@@ -58,13 +62,13 @@ body {
 }
 
 #wishlist {
-    background: rgba(70, 33, 42, 0.431);
+    background: rgba(197, 0, 10, 0.233);
     /* border: 1px solid blue; */
     text-align: center;
-    font-size: medium;
+    font-size: 11pt;
 }
 #top-rated {
-    background: rgba(70, 33, 70, 0.431);
+    background: rgba(108, 238, 177, 0.342);
     /* border: 1px solid green; */
     text-align: center;
     font-size: medium;
@@ -75,7 +79,7 @@ body {
     display: grid;
     grid-template-columns: 25% auto 25%;
     width: 100%;
-    background: rgba(70, 33, 70, 0.431);
+    background: rgba(21, 255, 0, 0.431);
     /* border: 1px solid red; */
 }
 
@@ -106,6 +110,7 @@ body {
 #ballpark-image {
 
     width: 400px !important;
+    border: 2px solid rgb(226, 120, 0);
 
 }
 
@@ -119,4 +124,10 @@ body {
 
 #user-rating{
     margin-top: 10em;
+}
+
+.top-rated-container{
+    font-size: 12pt;
+    color: rgb(2, 0, 116);
+    font-style: ;
 }

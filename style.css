@@ -57,7 +57,9 @@ body {
     background: rgba(68, 70, 33, 0.431);
     /* border: 1px solid yellow; */
     text-align: center;
-    font-size: 11pt;
+    font-size: 13pt;
+    color: #000000;
+    text-shadow: 2px 2px 8px rgb(255, 0, 0);
 
 }
 
@@ -66,19 +68,25 @@ body {
     /* border: 1px solid yellow; */
     text-align: center;
     font-size: large;
+    color: blue;
+    text-shadow: 2px 2px 8px #ff0000;
 }
 
 #wishlist {
     background: rgba(197, 0, 10, 0.233);
     /* border: 1px solid blue; */
     text-align: center;
-    font-size: 11pt;
+    font-size: 13pt;
+    color: #000000;
+    text-shadow: 2px 2px 8px rgb(238, 255, 0);
 }
 #top-rated {
     background: rgba(108, 238, 177, 0.342);
     /* border: 1px solid green; */
     text-align: center;
-    font-size: medium;
+    font-size: 13pt;
+    color: #000000;
+    text-shadow: 2px 2px 8px rgb(238, 255, 0);
 }
 
 #inner-main {
@@ -142,6 +150,8 @@ body {
 
 #user-rating{
     margin-top: 10em;
+    display: inline-block;
+    text-align: right;
 }
 
 .top-rated-container{

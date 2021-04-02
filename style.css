@@ -34,19 +34,23 @@ body {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     font-family: 'Playball', cursive;
+    
 }
 #main-header {
-    color: rgb(250, 246, 8);
+    color: rgb(255, 251, 8);
     display: flex;
     justify-content: center;
     background: #00721b;
-    opacity: .8;
+    opacity: 1.2;
     padding: 1rem;
     /* background-image: url(https://www.freewebheaders.com/wp-content/gallery/baseball/thumbs/thumbs_baseball-ball-header.jpg); */
     background: url(https://lh3.googleusercontent.com/proxy/R-RDyIb0DOdfZNzVg45p6s-eXxzwI6DsihdLOR0h0msFnMK1iXh7VG6Mne3tScuJPzWaPT6hGqdTQXhWwIqy5Vix68Hnh2HGOio-Zvtm8-2z-wf7A4tXZT2w);
     background-position: center;
     background-size: auto;
     background-repeat: no-repeat;
+    font-size: x-large;
+    text-shadow: 2px 2px 8px #0011ff;
+    
 }
 
 #visited {
@@ -99,7 +103,7 @@ body {
 }
 
 #login-container{
-    font-size: 15px;
+    font-size: large;
     color: rgb(255, 253, 253);
     /* display: flex; */
     /* justify-content: center; */
@@ -143,5 +147,4 @@ body {
 .top-rated-container{
     font-size: 12pt;
     color: rgb(2, 0, 116);
-    font-style: ;
 }

@@ -148,9 +148,18 @@ ballparks.addEventListener('click', event => {
             capacity.innerText = `Capacity: ${data.capacity}`
             nickname.innerText = data.nickname
             team.innerText = `Home of the ${data.home_team}`
+
+
+           
+
+            // console.log(data.user_ballparks)
+
+
+
+
         })
         
-        console.log(event.target.dataset.userBallparkId)
+      
     }
 })
 
@@ -283,13 +292,13 @@ const favoriteTeamUpdateForm = () => {
 /*****************User Rating Form Listener******************************/
 const ballParkVisit = (id) => {
     // ballparkLi.dataset.userBallparkId
-    console.log(id)
+    // console.log(id)
 
     fetch(`http://localhost:3000/user_ballparks/${id}`)
         .then(resp => resp.json())
         .then(data => {
             const parkName = data.ballpark.name 
-            console.log(data)
+            // console.log(data)
             const overall = data.overall_experience
             const concession = data.concession_rating
             const beauty = data.beauty_rating
@@ -317,6 +326,19 @@ const ballParkVisit = (id) => {
             topRated.append(h2)
             topRated.append(ul)
             ul.append(overallP, conP, beautyP, priceP, crowdP, commentBox)
+
+
+            userRatingForm.overall_experience.value = data.overall_experience
+            userRatingForm.concession_rating.value = data.concession_rating
+            userRatingForm.beauty_rating.value = data.beauty_rating
+            userRatingForm.overall_price_rating.value = data.overall_price_rating
+            userRatingForm.crowd_rating.value = data.crowd_rating
+            userRatingForm.comments.value = data.comments
+            console.log(data.overall_experience)
+
+
+
+
         })
     // console.log(ballparkLi.dataset.userBallparkId)
 }

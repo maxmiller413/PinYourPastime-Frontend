@@ -1,7 +1,11 @@
 
-li::before{
+.ballpark-list::before{
     content: " ⚾ ";
 
+}
+
+.wish-li::before{
+    content: " ♥️ "
 }
 
 li {
@@ -15,39 +19,49 @@ body {
 }
 
 #main-wrapper {
+    margin: auto;
     height: 100vh; 
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 15%  auto 15%;
+    background-image: url("https://wallpapercave.com/wp/OELdkBa.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #main-header {
+    color: rgb(0, 7, 98);
     display: flex;
     justify-content: center;
-    background: #25ee54;
+    background: #00721b;
     opacity: .8;
     padding: 1rem;
+    /* background-image: url(https://www.freewebheaders.com/wp-content/gallery/baseball/thumbs/thumbs_baseball-ball-header.jpg); */
+    background: url(https://lh3.googleusercontent.com/proxy/R-RDyIb0DOdfZNzVg45p6s-eXxzwI6DsihdLOR0h0msFnMK1iXh7VG6Mne3tScuJPzWaPT6hGqdTQXhWwIqy5Vix68Hnh2HGOio-Zvtm8-2z-wf7A4tXZT2w);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #visited {
-    background: orange; 
+    background: rgba(251, 163, 0, 0.774); 
     text-align: center;
     font-size: medium;
 
 }
 
 .main-title {
-    background: violet;
+    background: rgba(70, 33, 70, 0.431);
     text-align: center;
     font-size: large;
 }
 
 #wishlist {
-    background: blue;
+    background: rgba(0, 0, 255, 0.705);
     text-align: center;
     font-size: medium;
 }
 #top-rated {
-    background: green;
+    background: rgba(0, 128, 0, 0.65);
     text-align: center;
     font-size: medium;
 }
@@ -57,7 +71,7 @@ body {
     display: grid;
     grid-template-columns: 25% auto 25%;
     width: 100%;
-    background: red;
+    background: rgba(255, 0, 0, 0.555);
 }
 
 .area-container {
@@ -72,7 +86,21 @@ body {
     width: 100%;
 }
 
-#ballpark-details {
+#login-container{
+    color: rgb(255, 253, 253);
+    /* display: flex; */
+    /* justify-content: center; */
+    margin: auto;
+    text-align: center;
+    
+    background-color: #0004ff93;
+}
+
+#main-container{
+    background-image: url("https://wallpapercave.com/wp/OELdkBa.jpg");
+}
+
+/* #ballpark-details {
 
     
-}
+} */

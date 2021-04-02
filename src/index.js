@@ -94,6 +94,7 @@ loginDiv.addEventListener('submit', event => {
                 data.user_ballparks.forEach(ballpark =>{
                     // console.log(ballpark.ballpark.home_team)
                     const ballparkLi = document.createElement('li')
+                    ballparkLi.className = 'ballpark-list'
                     ballparkLi.textContent = ballpark.ballpark.home_team
                     ballparkLi.dataset.userBallparkId = ballpark.id 
                     ballparkUl.append(ballparkLi)
@@ -112,6 +113,8 @@ loginDiv.addEventListener('submit', event => {
 })
 /*****************Ballparks Listener******************************/
 ballparks.addEventListener('click', event => {
+    
+    // console.log(h2)
     if(event.target.matches('li')){
         topRated.innerHTML = ' '
         ballParkVisit(event.target.dataset.userBallparkId)
@@ -122,9 +125,12 @@ ballparks.addEventListener('click', event => {
         .then(resp => resp.json())
         .then(data => {
             // console.log(data)
+            userRatingForm.dataset.ballparkName = data.name
             userRatingForm.dataset.ballparkId = event.target.dataset.id
             userRatingForm.dataset.visitId = event.target.dataset.userBallparkId
             // ballparksDiv.id= 'ballpark-details'
+            const h2 = userRatingForm.querySelector('h2')
+            h2.innerHTML = `Log a visit for ${data.name}!`
             img.src = data.image
             parkLocation.innerText = `Location: ${data.location}`
             parkName.innerText = `${data.name}`
@@ -142,7 +148,7 @@ ballparks.addEventListener('click', event => {
 /*****************User Rating Form Listener******************************/
 
 userRatingForm.addEventListener('submit', event => {
-    
+
     event.preventDefault()
     const overall = event.target.overall_experience.value
     const concession = event.target.concession_rating.value
@@ -190,7 +196,7 @@ userRatingForm.addEventListener('submit', event => {
     // event.target.reset()
 })
 
-
+/*****************Wish List Render******************************/
 const wishList = () => {
     const username = divMain.dataset.username
     // console.log(username)
@@ -200,13 +206,14 @@ const wishList = () => {
         // console.log(data)
         data.wish_lists.forEach(wl => {
             const li = document.createElement('li')
+            li.className= 'wish-li'
             li.textContent = wl
             wishlistUl.append(li)
         })
     }).catch(errors => console.log(errors.message))
     )
 }
-
+/*****************Visit List render******************************/
 const visitList = () => {
     const username = divMain.dataset.username
     return (fetch(`http://localhost:3000/users/${username}`)
@@ -221,7 +228,7 @@ const visitList = () => {
     }).catch(errors => console.log(errors.message))
     )
 }
-
+/*****************Favorite Team Update Form Listener******************************/
 const favoriteTeamUpdateForm = () => {
     // divMain.dataset.favTeam = data.favorite_team
     const favTeam = divMain.dataset.favTeam
@@ -262,7 +269,7 @@ const favoriteTeamUpdateForm = () => {
     })
 }
 
-
+/*****************User Rating Form Listener******************************/
 const ballParkVisit = (id) => {
     // ballparkLi.dataset.userBallparkId
     console.log(id)
@@ -300,27 +307,6 @@ const ballParkVisit = (id) => {
             topRated.append(ul)
             ul.append(overallP, conP, beautyP, priceP, crowdP, commentBox)
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // console.log(ballparkLi.dataset.userBallparkId)
-
-
 }
 
-// ballParkVisit()

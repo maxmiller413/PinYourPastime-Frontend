@@ -159,3 +159,7 @@ body {
     color: #010050;
     text-shadow: 2px 2px 8px rgb(238, 255, 0);
 }
+
+input[type=number]{
+    width: 150px;
+} 

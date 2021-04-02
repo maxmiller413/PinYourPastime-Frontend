@@ -64,6 +64,7 @@ loginDiv.addEventListener('submit', event => {
                 data.user_ballparks.forEach(ballpark =>{
                     // console.log(ballpark.ballpark.home_team)
                     const ballparkLi = document.createElement('li')
+                    ballparkLi.className = 'ballpark-list'
                     ballparkLi.textContent = ballpark.ballpark.home_team
                     ballparkLi.dataset.userBallparkId = ballpark.id 
                     ballparkUl.append(ballparkLi)

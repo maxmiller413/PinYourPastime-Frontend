@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+
 .visit-li::before{
     content: " 📌 ";
 }
@@ -19,7 +21,7 @@ li {
 
 body {
     margin: 0;
-    font-family: monospace;
+    /* font-family: monospace; */
 }
 
 #main-wrapper {
@@ -31,9 +33,10 @@ body {
     background-image: url("https://wallpapercave.com/wp/OELdkBa.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    font-family: 'Playball', cursive;
 }
 #main-header {
-    color: rgb(0, 7, 98);
+    color: rgb(250, 246, 8);
     display: flex;
     justify-content: center;
     background: #00721b;
@@ -121,6 +124,15 @@ body {
     position: absolute;
     top: 3em;
     left: 10em;
+
+}
+
+#fuckingaudio{
+
+    position: absolute;
+    top: 3em;
+    right: 10em;
+    width: 100px;
 
 }
 

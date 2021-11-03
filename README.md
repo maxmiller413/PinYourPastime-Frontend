@@ -14,7 +14,7 @@ This app will help a user rate different ballparks around the country and keep t
 
 ## Technologies/APIs Used
 
-**Client:** Vanilla JavaScript, Bootstrap CSS Framework
+**Client:** JavaScript, Vanilla CSS
 
 **Server:** Ruby, Ruby on Rails, PostgreSQL
 

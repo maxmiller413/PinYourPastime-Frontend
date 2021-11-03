@@ -22,7 +22,7 @@ This app will help a user rate different ballparks around the country and keep t
 
 Please give a ⭐️ if you like this project, thank you!
 
-## Author
+## Authors
 
 Max Miller
 - Github:  [@maxmiller413](https://github.com/maxmiller413)

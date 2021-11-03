@@ -30,4 +30,4 @@ Max Miller
 
 Doug Kerzner
 - Github:  [@DkFresh89](https://github.com/DkFresh89)
-- LinkedIn:[Doug Kerzner](https://www.linkedin.com/in/doug-kerzner/)
+- LinkedIn:[@Doug Kerzner](https://www.linkedin.com/in/doug-kerzner/)
